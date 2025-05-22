@@ -1,0 +1,228 @@
+/* ======= VARIABLES Y RESET ======= */
+:root {
+  --azul-primario: #1b396a;
+  --azul-secundario: #2e5984;
+  --amarillo-icono: #f9c74f;
+  --gris-claro: #f5f5f5;
+  --gris-texto: #666;
+  --blanco: #fff;
+  --borde-redondo: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ======= ENCABEZADO ======= */
+.recuperar-header {
+  background-color: var(--azul-primario);
+  color: var(--blanco);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+}
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.recuperar-encabezado-logo {
+  height: 50px;
+}
+
+.recuperar-encabezado-titulo {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* ======= MAIN ======= */
+.recuperar-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--gris-claro);
+  position: relative;
+  padding: 2rem 1rem;
+}
+
+.recuperar-card {
+  background-color: var(--blanco);
+  border-radius: var(--borde-redondo);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 1000px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
+/* ======= COLUMNA IZQUIERDA ======= */
+.recuperar-info {
+  background: linear-gradient(135deg, var(--azul-primario), var(--azul-secundario));
+  color: var(--blanco);
+  padding: 2rem;
+  border-top-left-radius: var(--borde-redondo);
+  border-bottom-left-radius: var(--borde-redondo);
+}
+
+.recuperar-info h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.recuperar-info p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.recuperar-info ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.recuperar-info li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.recuperar-info li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  color: var(--amarillo-icono);
+  font-weight: bold;
+}
+
+/* ======= FORMULARIO ======= */
+.recuperar-card-inner {
+  padding: 2.5rem 2rem;
+}
+
+.recuperar-card-inner h3 {
+  font-size: 1.5rem;
+  color: var(--azul-primario);
+  margin-bottom: 0.5rem;
+}
+
+.recuperar-subtitle {
+  color: var(--gris-texto);
+  margin-bottom: 1.5rem;
+}
+
+.recuperar-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.recuperar-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--azul-primario);
+}
+
+.recuperar-label i {
+  color: var(--amarillo-icono);
+  margin-right: 0.5rem;
+}
+
+.recuperar-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.recuperar-input:focus {
+  outline: none;
+  border-color: var(--azul-primario);
+  box-shadow: 0 0 0 2px rgba(27, 57, 106, 0.2);
+}
+
+/* ======= BOTÓN ======= */
+.recuperar-btn {
+  background-color: var(--azul-primario);
+  color: var(--blanco);
+  border: none;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.recuperar-btn i {
+  margin-right: 0.5rem;
+}
+
+.recuperar-btn:hover {
+  background-color: #16335c;
+}
+
+/* ======= ENLACE AL LOGIN ======= */
+.recuperar-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.recuperar-link {
+  color: var(--azul-primario);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.recuperar-link:hover {
+  text-decoration: underline;
+}
+
+/* ======= ONDA DECORATIVA ======= */
+.recuperar-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url('/assets/img/wave.svg') no-repeat bottom;
+  background-size: cover;
+}
+
+/* ======= PIE DE PÁGINA FINAL ======= */
+.recuperar-footer-final {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--gris-texto);
+  background-color: var(--gris-claro);
+  padding: 1rem;
+}
+.recuperar-header {
+  background-color: #003366; /* azul institucional */
+  color: white;
+  height: 70px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recuperar-encabezado-logo {
+  height: 45px;
+}
+
+.recuperar-encabezado-titulo {
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-align: center;
+  flex-grow: 1;
+  margin-left: -45px; /* compensar visualmente el logo */
+}
+
+@media (max-width: 576px) {
+  .recuperar-encabezado-titulo {
+    font-size: 1rem;
+    text-align: right;
+  }
+}

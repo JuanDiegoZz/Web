@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recuperar Contraseña | Portal Reportes</title>
+
+  <!-- Bootstrap local -->
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+
+  <!-- Bootstrap Icons local -->
+  <link rel="stylesheet" href="/assets/icons/bootstrap-icons-1.11.3/font/bootstrap-icons.css">
+
+  <!-- Estilo personalizado -->
+  <link rel="stylesheet" href="/assets/css/recuperar.css" />
+</head>
+
+<body>
+  <!-- Encabezado -->
+<header class="recuperar-header d-flex align-items-center justify-content-between px-4 py-2">
+  <a href="/">
+    <img src="/assets/img/logo_blanco.svg" alt="Logo Gobierno" class="recuperar-encabezado-logo">
+  </a>
+  <h1 class="recuperar-encabezado-titulo m-0">Sistema de Reportes Ciudadanos</h1>
+</header>
+
+  <!-- Contenido principal -->
+  <main class="recuperar-main">
+    <div class="recuperar-card container">
+      <div class="row">
+        <!-- Columna izquierda -->
+        <div class="col-md-6 recuperar-info">
+          <h2>¿Olvidaste tu contraseña?</h2>
+          <p>
+            Recupera el acceso a tu cuenta ingresando tu correo electrónico. Te enviaremos
+            instrucciones detalladas para restablecer tu contraseña y seguir utilizando el
+            sistema de reportes de forma segura.
+          </p>
+          <ul>
+            <li>100% seguro y confidencial</li>
+            <li>Fácil y rápido</li>
+            <li>Sin necesidad de contacto presencial</li>
+          </ul>
+        </div>
+
+        <!-- Columna derecha (formulario) -->
+        <div class="col-md-6">
+          <div class="recuperar-card-inner">
+            <h3><i class="bi bi-lock-fill"></i> Recuperar Contraseña</h3>
+            <p class="recuperar-subtitle">Ingresa tu correo para recibir instrucciones</p>
+            <form id="form-forgot" class="recuperar-form">
+              <div class="recuperar-form-group">
+                <label for="email" class="recuperar-label">
+                  <i class="bi bi-envelope-fill"></i> Correo electrónico
+                </label>
+                <input
+                  type="email"
+                  class="recuperar-input"
+                  id="email"
+                  placeholder="usuario@dominio.com"
+                  required
+                />
+              </div>
+              <button type="submit" class="recuperar-btn" id="sendBtn">
+                <i class="bi bi-send-fill"></i> Enviar Instrucciones
+              </button>
+              <div class="recuperar-footer">
+                <a href="/pages/login.html" class="recuperar-link">
+                  <i class="bi bi-arrow-left"></i> Volver al inicio de sesión
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Pie de página institucional -->
+  <footer class="recuperar-footer-final">
+    <hr />
+    <p>&copy; 2025 Gobierno de México. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Scripts -->
+   <script src="/assets/js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.getElementById('form-forgot').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const sendBtn = document.getElementById('sendBtn');
+      const originalHTML = sendBtn.innerHTML;
+
+      // Deshabilitar botón y mostrar spinner
+      sendBtn.disabled = true;
+      sendBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Enviando...';
+
+      try {
+        const res = await fetch(`${API_BASE_URL}/auth/forgot-password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ correo: email })
+      });
+        const data = await res.json();
+
+        if (res.ok) {
+          await Swal.fire({
+            icon: 'success',
+            title: '¡Listo!',
+            text: data.mensaje || 'Revisa tu correo para restablecer tu contraseña.'
+          });
+        } else {
+          await Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: data.mensaje || data.error || 'No se pudo procesar la solicitud.'
+          });
+        }
+      } catch (err) {
+        console.error('Error al enviar instrucciones:', err);
+        await Swal.fire({
+          icon: 'error',
+          title: 'Error de red',
+          text: 'No se pudo conectar con el servidor.'
+        });
+      } finally {
+        // Restaurar botón
+        sendBtn.disabled = false;
+        sendBtn.innerHTML = originalHTML;
+      }
+    });
+  </script>
+  
+</body>
+
+</html>

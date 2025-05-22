@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Sistema de Reportes Ciudadanos</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/registro.css">
+    <link rel="stylesheet" href="/assets/icons/bootstrap-icons-1.11.3/font/bootstrap-icons.css">
+</head>
+
+<body class="bg-lighter">
+    <div class="registro-container">
+        <!-- Header -->
+        <header class="registro-header bg-white shadow-sm py-3">
+            <div class="container">
+                <div class="text-center">
+    <a href="/">
+        <img src="/assets/img/logo_blanco.svg" alt="Gobierno de México" class="registro-logo">
+    </a>
+</div>
+            </div>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="registro-main py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="registro-card card border-0 shadow-lg">
+                            <div class="row g-0">
+                                <!-- Sección informativa -->
+                                <div class="col-md-5 registro-info bg-gradient-primary text-white p-4 p-lg-5">
+                                    <div class="d-flex flex-column h-100">
+                                        <!-- Título principal -->
+                                        <div class="mb-4">
+                                            <div class="d-flex align-items-center mb-2">
+                                                <div class="border-bottom border-white border-2 me-3"
+                                                    style="width: 40px;"></div>
+                                                <span class="text-uppercase small fw-bold letter-spacing-1">Plataforma
+                                                    Ciudadana</span>
+                                            </div>
+                                            <h1 class="display-5 fw-bold mb-3">Gobierno de México</h1>
+                                            <h2 class="h4 fw-normal mb-0">Sistema de Reportes Ciudadanos</h2>
+                                        </div>
+
+                                        <!-- Descripción -->
+                                        <div class="mb-5 py-3 border-top border-bottom border-white border-opacity-25">
+                                            <p class="lead mb-0">Contribuye al mejoramiento de tu comunidad mediante
+                                                nuestro sistema de reportes urbanos colaborativos.</p>
+                                        </div>
+
+                                        <!-- Beneficios -->
+                                        <div class="mb-auto">
+                                            <h3 class="h5 fw-bold mb-3 text-uppercase letter-spacing-1">Beneficios al
+                                                registrarte:</h3>
+                                            <ul class="list-unstyled">
+                                                <li class="d-flex align-items-start mb-3">
+                                                    <i class="bi bi-check-circle-fill me-3 mt-1 text-warning"></i>
+                                                    <div>
+                                                        <h4 class="h6 fw-bold mb-1">Reporte de problemas</h4>
+                                                        <p class="small mb-0 opacity-75">Notifica incidencias en
+                                                            espacios públicos de tu colonia o localidad.</p>
+                                                    </div>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-3">
+                                                    <i class="bi bi-check-circle-fill me-3 mt-1 text-warning"></i>
+                                                    <div>
+                                                        <h4 class="h6 fw-bold mb-1">Seguimiento en tiempo real</h4>
+                                                        <p class="small mb-0 opacity-75">Monitorea el estado de cada
+                                                            reporte desde tu panel de usuario.</p>
+                                                    </div>
+                                                </li>
+                                                <li class="d-flex align-items-start">
+                                                    <i class="bi bi-check-circle-fill me-3 mt-1 text-warning"></i>
+                                                    <div>
+                                                        <h4 class="h6 fw-bold mb-1">Colaboración institucional</h4>
+                                                        <p class="small mb-0 opacity-75">Trabaja en conjunto con
+                                                            autoridades locales para soluciones efectivas.</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <!-- Imagen decorativa -->
+                                        <div class="mt-4 pt-3 text-center">
+                                            <img src="/assets/img/logo_blanco.svg" alt="Comunidad" class="img-fluid"
+                                                style="max-height: 120px;">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Formulario de registro -->
+                                <div class="col-md-7 registro-form bg-white p-4 p-lg-5">
+                                    <h2 class="h3 mb-4 text-dark">Registro de Usuario</h2>
+
+                                    <form class="needs-validation" novalidate>
+                                        <!-- Nombre y Apellido -->
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="nombre" class="form-label text-secondary">Nombre</label>
+                                                <div class="input-group shadow-sm">
+                                                    <span class="input-group-text bg-light border-end-0"><i
+                                                            class="bi bi-person text-muted"></i></span>
+                                                    <input type="text" class="form-control border-start-0" id="nombre"
+                                                        required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="apellido" class="form-label text-secondary">Apellido</label>
+                                                <div class="input-group shadow-sm">
+                                                    <span class="input-group-text bg-light border-end-0"><i
+                                                            class="bi bi-person text-muted"></i></span>
+                                                    <input type="text" class="form-control border-start-0" id="apellido"
+                                                        required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Localidad -->
+                                        <div class="mt-3">
+                                            <label for="localidad" class="form-label text-secondary">Localidad</label>
+                                            <div class="input-group shadow-sm">
+                                                <span class="input-group-text bg-light border-end-0"><i
+                                                        class="bi bi-geo-alt text-muted"></i></span>
+                                                <input type="text" class="form-control border-start-0" id="localidad"
+                                                    required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Teléfono -->
+                                        <div class="mt-3">
+                                            <label for="telefono" class="form-label text-secondary">Teléfono</label>
+                                            <div class="input-group shadow-sm">
+                                                <span class="input-group-text bg-light border-end-0"><i
+                                                        class="bi bi-telephone text-muted"></i></span>
+                                                <input type="tel" class="form-control border-start-0" id="telefono">
+                                            </div>
+                                        </div>
+
+                                        <!-- Email -->
+                                        <div class="mt-3">
+                                            <label for="email" class="form-label text-secondary">Correo
+                                                Electrónico</label>
+                                            <div class="input-group shadow-sm">
+                                                <span class="input-group-text bg-light border-end-0"><i
+                                                        class="bi bi-envelope text-muted"></i></span>
+                                                <input type="email" class="form-control border-start-0" id="email"
+                                                    required>
+                                            </div>
+                                        </div>
+
+                                        <!-- Contraseña -->
+                                        <div class="mt-3">
+                                            <label for="password" class="form-label text-secondary">Contraseña</label>
+                                            <div class="input-group shadow-sm">
+                                                <span class="input-group-text bg-light border-end-0"><i
+                                                        class="bi bi-lock text-muted"></i></span>
+                                                <input type="password" class="form-control border-start-0" id="password"
+                                                    required>
+                                                <button class="btn btn-outline-light border" type="button"
+                                                    id="togglePassword">
+                                                    <i class="bi bi-eye text-secondary"></i>
+                                                </button>
+                                            </div>
+                                            <small class="form-text text-light">Mínimo 8 caracteres</small>
+                                        </div>
+
+                                        <!-- Términos y condiciones -->
+                                        <div class="form-check mt-4">
+                                            <input class="form-check-input border-secondary" type="checkbox"
+                                                id="terminos" required>
+                                            <label class="form-check-label text-secondary" for="terminos">
+                                                Acepto los <a href="#" class="text-primary">términos y condiciones</a>
+                                            </label>
+                                        </div>
+
+                                        <!-- Botón de Registro -->
+                                        <div class="d-grid mt-4">
+                                            <button type="submit" class="btn btn-primary py-2 shadow">
+                                                <i class="bi bi-person-plus me-2"></i>Registrarse
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                    <!-- Enlace a Login -->
+                                    <div class="text-center mt-4 pt-3 border-top border-light">
+                                        <p class="text-secondary mb-0">¿Ya tienes una cuenta? <a
+                                                href="/pages/login.html" class="text-primary">Inicia sesión</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="registro-footer bg-darker text-light py-4">
+            <div class="container text-center">
+                <p class="mb-0 small">© 2023 Gobierno de México. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </div>
+<script src="/assets/js/config.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/registro.js"></script>
+    <!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+</html>

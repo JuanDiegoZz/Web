@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Reportes Ciudadanos</title>
+    <!-- Bootstrap CSS -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="/assets/icons/bootstrap-icons-1.11.3/font/bootstrap-icons.css">
+    <!-- CSS Personalizado -->
+    <link href="/assets/css/index.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Barra superior - Versión final -->
+    <div class="bg-gobierno">
+        <div class="container">
+            <div class="header-text">
+                <span>Gobierno de México</span>
+                <span class="d-none d-md-inline"> | </span>
+                <span>Portal de Reportes Ciudadanos</span>
+            </div>
+            <a href="/pages/login.html" class="btn-login">
+                <i class="bi bi-person-fill"></i>
+                <span>Iniciar Sesión</span>
+            </a>
+            <!-- Dropdown de usuario, oculto por defecto -->
+            <div id="userDropdownContainer" class="dropdown d-none">
+                <button class="btn btn-dark dropdown-toggle d-flex align-items-center gap-2 px-4 py-2" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-radius: 50px;">
+                    <i class="bi bi-person-circle"></i>
+                    <span id="nombreUsuario"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end mt-2 sombra-hover" aria-labelledby="userDropdown" style="border-radius: 10px; border: 1px solid #ddd;">
+                    <li><a class="dropdown-item" href="/pages/miCuenta.html"><i class="bi bi-person-fill"></i> Mi cuenta</a></li>
+                    <li><a class="dropdown-item" href="/pages/misReportes.html"><i class="bi bi-file-earmark-text"></i> Mis reportes</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-danger" href="#" id="cerrarSesion"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar institucional -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/assets/img/logo_blanco.svg" alt="Gobierno de México" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPrincipal">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarPrincipal">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link active" href="/"><i class="bi bi-house-door"></i> Inicio</a>
+
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#reportes"><i class="bi bi-file-earmark-text"></i> Generar Reporte</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#noticias"><i class="bi bi-newspaper"></i> Noticias</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#contacto"><i class="bi bi-telephone"></i> Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section institucional -->
+    <header class="hero-gobierno py-5">
+        <div class="container text-center text-white">
+            <h1 class="display-4 fw-bold mb-3">Portal de Reportes Ciudadanos</h1>
+            <p class="lead mb-4">Reporta problemas en tu comunidad y da seguimiento a su solución.</p>
+            <a href="/pages/login.html" class="btn btn-light btn-lg px-4">
+                <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión / Registrarse
+            </a>
+        </div>
+    </header>
+
+    <!-- Noticias con estilo oficial -->
+    <section id="noticias" class="bg-light py-4">
+        <div class="container">
+            <div class="alert alert-gobierno rounded-0 border-start-0 border-end-0 mb-0 py-3">
+                <div class="marquee-container">
+                    <div class="marquee-content">
+                        <span class="badge bg-dark me-3">ÚLTIMO:</span>
+                        Ejemplo: Se atendió una fuga de agua en la colonia Centro... | Reporte ciudadano resuelto en 48
+                        hrs en la colonia Reforma...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reportes - Con las 12 categorías completas -->
+    <section id="reportes" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center mb-5 section-title">
+                <i class="bi bi-clipboard2-pulse"></i> Generar un Reporte
+            </h2>
+            <div class="row g-4">
+                <!-- Agua y Drenaje -->
+                <div class="col-md-3">
+                    <div class="card reporte-card h-100">
+                        <div class="card-img-container">
+                            <img src="/assets/img/reportes/agua-drenaje.webp" class="card-img-top" alt="Agua y Drenaje">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Agua y Drenaje</h5>
+                            <a href="/pages/reporte.html?categoria=agua" class="stretched-link  enlace-reporte"
+                                title="Reportar problema"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Electricidad -->
+                <div class="col-md-3">
+                    <div class="card reporte-card h-100">
+                        <div class="card-img-container">
+                            <img src="/assets/img/reportes/electricidad.webp" class="card-img-top" alt="Electricidad">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Electricidad</h5>
+                            <a href="/pages/reporte.html?categoria=electricidad" class="stretched-link  enlace-reporte"
+                                title="Reportar problema"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alumbrado Público -->
+                <div class="col-md-3">
+                    <div class="card reporte-card h-100">
+                        <div class="card-img-container">
+                            <img src="/assets/img/reportes/alumbrado-publico.webp" class="card-img-top"
+                                alt="Alumbrado Público">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Alumbrado Público</h5>
+                            <a href="/pages/reporte.html?categoria=alumbrado" class="stretched-link  enlace-reporte"
+                                title="Reportar problema"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seguridad Pública -->
+                <div class="col-md-3">
+                    <div class="card reporte-card h-100">
+                        <div class="card-img-container">
+                            <img src="/assets/img/reportes/seguridad-publica.webp" class="card-img-top"
+                                alt="Seguridad Pública">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Seguridad Pública</h5>
+                            <a href="/pages/reporte.html?categoria=seguridad" class="stretched-link  enlace-reporte"
+                                title="Reportar problema"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bacheo y Pavimento -->
+                <div class="col-md-3">
+                    <div class="card reporte-card h-100">
+                        <div class="card-img-container">
+                            <img src="/assets/img/reportes/bacheo-pavimento.webp" class="card-img-top"
+                                alt="Bacheo y Pavimento">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Bacheo y Pavimento</h5>
+                            <a href="/pages/reporte.html?categoria=bacheo" class="stretched-link  enlace-reporte"
+                                title="Reportar problema"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Limpieza y Basura -->
+                <div class="col-md-3">
+                    <div class="card reporte-card h-100">
+                        <div class="card-img-container">
+                            <img src="/assets/img/reportes/limpieza-basura.webp" class="card-img-top"
+                                alt="Limpieza y Basura">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Limpieza y Basura</h5>
+                            <a href="/pages/reporte.html?categoria=limpieza" class="stretched-link  enlace-reporte"
+                                title="Reportar problema"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Parques y Espacios Públicos -->
+                <div class="col-md-3">
+                    <div class="card reporte-card h-100">
+                        <div class="card-img-container">
+                            <img src="/assets/img/reportes/parques-espacios.webp" class="card-img-top"
+                                alt="Parques y Espacios Públicos">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Parques y Espacios Públicos</h5>
+                            <a href="/pages/reporte.html?categoria=parques" class="stretched-link  enlace-reporte"
+                                title="Reportar problema"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tránsito y Vialidad -->
+                <div class="col-md-3">
+                    <div class="card reporte-card h-100">
+                        <div class="card-img-container">
+                            <img src="/assets/img/reportes/transito-vialidad.webp" class="card-img-top"
+                                alt="Tránsito y Vialidad">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Tránsito y Vialidad</h5>
+                            <a href="/pages/reporte.html?categoria=transito" class="stretched-link  enlace-reporte"
+                                title="Reportar problema"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Salud y Control Sanitario -->
+                <div class="col-md-3">
+                    <div class="card reporte-card h-100">
+                        <div class="card-img-container">
+                            <img src="/assets/img/reportes/salud-sanitario.webp" class="card-img-top"
+                                alt="Salud y Control Sanitario">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Salud y Control Sanitario</h5>
+                            <a href="/pages/reporte.html?categoria=salud" class="stretched-link  enlace-reporte"
+                                title="Reportar problema"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Obras Públicas -->
+                <div class="col-md-3">
+                    <div class="card reporte-card h-100">
+                        <div class="card-img-container">
+                            <img src="/assets/img/reportes/obras-publicas.webp" class="card-img-top"
+                                alt="Obras Públicas">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Obras Públicas</h5>
+                            <a href="/pages/reporte.html?categoria=obras" class="stretched-link  enlace-reporte"
+                                title="Reportar problema"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Iniciativas Ciudadanas -->
+                <div class="col-md-3">
+                    <div class="card reporte-card h-100">
+                        <div class="card-img-container">
+                            <img src="/assets/img/reportes/iniciativas-ciudadanas.webp" class="card-img-top"
+                                alt="Iniciativas Ciudadanas">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Iniciativas Ciudadanas</h5>
+                            <a href="/pages/reporte.html?categoria=iniciativas" class="stretched-link  enlace-reporte"
+                                title="Reportar problema"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Turismo -->
+                <div class="col-md-3">
+                    <div class="card reporte-card h-100">
+                        <div class="card-img-container">
+                            <img src="/assets/img/reportes/turismo.webp" class="card-img-top" alt="Turismo">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Turismo</h5>
+                            <a href="/pages/reporte.html?categoria=turismo" class="stretched-link"
+                                title="Reportar problema"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto - Versión simplificada -->
+    <section id="contacto" class="py-5 bg-light text-center">
+        <div class="container">
+            <h2 class="mb-4">Contacto</h2>
+            <div class="contacto-simple">
+                <p><i class="bi bi-envelope me-2"></i> Correo: reportesciudadanos4c@gmail.com</p>
+                <p><i class="bi bi-telephone me-2"></i> Teléfono: 56-5012-2286</p>
+                <p><i class="bi bi-geo-alt me-2"></i> Dirección: Oficinas Centrales, Monclova</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toggle para modo oscuro 
+<div class="theme-switcher fixed-bottom mb-3 ms-3">
+    <button id="themeToggle" class="btn btn-sm btn-dark rounded-pill">
+        <i class="bi bi-moon-fill"></i> Modo Oscuro
+    </button>
+</div>-->
+
+    <!-- Footer (sin cambios) -->
+    <footer class="bg-gobierno-dark text-white py-3 text-center">
+        <div class="container">
+            <p class="mb-0 small">&copy; 2025 Gobierno de México</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/config.js"></script>
+    <script src="/assets/js/index.js"></script>
+    <!-- SweetAlert2 CDN CAMBIAR DESPUES DE MANERA LOCAL RECORDATORIO -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

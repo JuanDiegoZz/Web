@@ -1,0 +1,153 @@
+/* === ESTILOS GENERALES === */
+body {
+  background-color: #f6f7f9;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+}
+
+/* === ENCABEZADO ACTUALIZADO === */
+.encabezado {
+  background-color: #f6f7f9;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* Sombra sutil */
+  z-index: 10;
+}
+
+.logo {
+  height: 45px; /* Aumentado de 50px a 65px */
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  filter: brightness(0) saturate(100%) invert(17%) sepia(9%) saturate(348%) hue-rotate(178deg) brightness(92%) contrast(89%);
+}
+
+
+.titulo-encabezado {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2c3e50; /* Azul oscuro institucional */
+  margin: 0;
+  text-align: center;
+  flex-grow: 1;
+}
+
+/* === CONTENEDOR PRINCIPAL === */
+.contenedor {
+  min-height: calc(100vh - 120px);
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* === CARD PRINCIPAL === */
+.card-principal {
+  max-width: 900px;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* === SECCIÓN IZQUIERDA === */
+.seccion-izquierda {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  flex: 1;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.seccion-izquierda img {
+  max-width: 100%;
+  height: auto;
+}
+
+.lista-iconos li {
+  list-style: none;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+}
+
+.icono {
+  color: #f1c40f;
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* === SECCIÓN DERECHA === */
+.seccion-derecha {
+  flex: 1;
+  padding: 2rem;
+}
+
+.titulo-formulario {
+  color: #2c3e50;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* === BOTÓN === */
+.boton-enviar {
+  background: linear-gradient(to right, #1e3c72, #2a5298);
+  border: none;
+  font-weight: bold;
+  transition: background 0.3s;
+  color: white;
+}
+
+.boton-enviar:hover {
+  background: linear-gradient(to right, #163a6b, #234d84);
+}
+
+/* === MAPA PLACEHOLDER === */
+.placeholder-mapa {
+  background-color: #f0f0f0;
+  border: 1px dashed #ccc;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  font-style: italic;
+  font-size: 0.95rem;
+  text-align: center;
+  color: #777;
+}
+
+/* === PIE DE PÁGINA === */
+.pie-pagina {
+  background-color: #1c2833;
+  color: #ffffff;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 1rem 0;
+  border-top: 1px solid #2e4053;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+  .card-principal {
+    flex-direction: column-reverse;
+  }
+
+  .seccion-izquierda,
+  .seccion-derecha {
+    padding: 1.5rem;
+  }
+
+  .titulo-encabezado {
+    font-size: 1rem;
+  }
+}

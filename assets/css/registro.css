@@ -1,0 +1,203 @@
+/* Variables de diseño */
+:root {
+    --primary: #6F82BD;
+    --primary-dark: #39505E;
+    --secondary: #909DA5;
+    --dark: #253946;
+    --darker: #14242F;
+    --light: #B5BABC;
+    --lighter: #F8F9FA;
+    --border: #526976;
+    --success: #28a745;
+    --hover-primary: #5A6DA8;
+    --active-primary: #4A5D88;
+    --sombra-suave: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --sombra-hover: 0 6px 18px rgba(0, 0, 0, 0.12);
+    --sombra-boton: 0 3px 6px rgba(111, 130, 189, 0.3);
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--darker);
+    line-height: 1.6;
+}
+
+/* Contenedor principal */
+.registro-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+.registro-header {
+    box-shadow: var(--sombra-suave);
+}
+
+.registro-logo {
+    height: 70px;
+    transition: transform 0.3s ease;
+    filter: brightness(0) saturate(100%) invert(28%) sepia(9%) saturate(1114%) hue-rotate(185deg) brightness(93%) contrast(88%) drop-shadow(0 2px 4px rgba(255, 1, 1, 0.2));
+}
+
+
+.registro-logo:hover {
+    transform: scale(1.05);
+}
+
+/* Sección informativa */
+.registro-info {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.registro-info h1 {
+    font-size: 2.5rem;
+    line-height: 1.1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.registro-info h2 {
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+.letter-spacing-1 {
+    letter-spacing: 1px;
+}
+
+.registro-info .lead {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.registro-info ul li {
+    transition: transform 0.3s ease;
+}
+
+.registro-info ul li:hover {
+    transform: translateX(5px);
+}
+
+/* Tarjeta de registro */
+.registro-card {
+    border-radius: 0.375rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.registro-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-hover) !important;
+}
+
+/* Formulario */
+.registro-form {
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+}
+
+.input-group {
+    transition: box-shadow 0.3s ease;
+}
+
+.input-group:hover {
+    box-shadow: var(--sombra-boton) !important;
+}
+
+.input-group-text {
+    background-color: var(--lighter);
+    color: var(--secondary);
+    border-color: var(--light);
+}
+
+.form-control {
+    background-color: var(--lighter);
+    border-color: var(--light);
+    color: var(--darker);
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(111, 130, 189, 0.25);
+}
+
+/* Botones */
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-boton);
+}
+
+.btn-primary:active {
+    background-color: var(--active-primary) !important;
+    transform: translateY(0);
+}
+
+/* Checkbox personalizado */
+.form-check-input {
+    border: 1px solid var(--secondary);
+}
+
+.form-check-input:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+/* Textos y enlaces */
+.text-secondary {
+    color: var(--secondary) !important;
+}
+
+.text-light {
+    color: var(--light) !important;
+}
+
+.text-primary {
+    color: var(--primary) !important;
+}
+
+a.text-primary:hover {
+    color: var(--primary-dark) !important;
+}
+
+/* Footer */
+.registro-footer {
+    background-color: var(--darker);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 767.98px) {
+    .registro-info, .registro-form {
+        border-radius: 0 !important;
+    }
+    
+    .registro-info {
+        border-top-left-radius: 0.375rem !important;
+        border-top-right-radius: 0.375rem !important;
+    }
+    
+    .registro-form {
+        border-bottom-left-radius: 0.375rem !important;
+        border-bottom-right-radius: 0.375rem !important;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.registro-card {
+    animation: fadeIn 0.6s ease-out forwards;
+}

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mi Cuenta - Portal de Reportes Ciudadanos</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="/assets/icons/bootstrap-icons-1.11.3/font/bootstrap-icons.css">
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- CSS Personalizado -->
+  <!-- <link href="/assets/css/mi_cuenta.css" rel="stylesheet"> -->
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <!-- HEADER con solo Regresar -->
+  <header class="bg-dark text-white py-2">
+    <div class="container d-flex justify-content-start">
+      <button onclick="history.back()" class="btn btn-outline-light btn-sm">
+        <i class="bi bi-arrow-left"></i> Regresar
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN / Mi Cuenta -->
+  <main class="flex-fill py-5">
+    <div class="container">
+      <div id="account-card"
+           class="card border-primary shadow-lg rounded-4 mx-auto">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+          <h5 class="mb-0"><i class="bi bi-person-circle"></i> Mi Cuenta</h5>
+          <button id="btnEditar" class="btn btn-light btn-sm">
+            <i class="bi bi-pencil-square"></i> Editar
+          </button>
+        </div>
+        <div class="card-body bg-white">
+          <p class="text-secondary">
+            Visualiza tus datos. Pulsa <strong>Editar</strong> para modificar.
+          </p>
+          <ul class="list-group list-group-flush mb-3">
+            <!-- Nombre -->
+            <li class="list-group-item d-flex align-items-center">
+              <i class="bi bi-person-fill me-2 text-secondary"></i>
+              <span class="me-auto">Nombre:</span>
+              <span id="span-nombre" class="fw-bold">—</span>
+              <input id="input-nombre"
+                     class="form-control form-control-sm d-none w-50 ms-3"
+                     type="text">
+            </li>
+            <!-- Apellido -->
+            <li class="list-group-item d-flex align-items-center">
+              <i class="bi bi-person-badge-fill me-2 text-secondary"></i>
+              <span class="me-auto">Apellido:</span>
+              <span id="span-apellido" class="fw-bold">—</span>
+              <input id="input-apellido"
+                     class="form-control form-control-sm d-none w-50 ms-3"
+                     type="text">
+            </li>
+            <!-- Localidad -->
+            <li class="list-group-item d-flex align-items-center">
+              <i class="bi bi-geo-alt-fill me-2 text-secondary"></i>
+              <span class="me-auto">Localidad:</span>
+              <span id="span-localidad" class="fw-bold">—</span>
+              <input id="input-localidad"
+                     class="form-control form-control-sm d-none w-50 ms-3"
+                     type="text">
+            </li>
+            <!-- Teléfono -->
+            <li class="list-group-item d-flex align-items-center">
+              <i class="bi bi-telephone-fill me-2 text-secondary"></i>
+              <span class="me-auto">Teléfono:</span>
+              <span id="span-telefono" class="fw-bold">—</span>
+              <input id="input-telefono"
+                     class="form-control form-control-sm d-none w-50 ms-3"
+                     type="tel">
+            </li>
+            <!-- Correo -->
+            <li class="list-group-item d-flex align-items-center">
+              <i class="bi bi-envelope-fill me-2 text-secondary"></i>
+              <span class="me-auto">Correo electrónico:</span>
+              <span id="span-correo" class="fw-bold">—</span>
+              <input id="input-correo"
+                     class="form-control form-control-sm d-none w-50 ms-3"
+                     type="email">
+            </li>
+          </ul>
+          <!-- Controles de edición -->
+          <div class="text-end">
+            <button id="btnGuardar"
+                    class="btn btn-success btn-sm d-none me-2">
+              <i class="bi bi-check-circle"></i> Guardar
+            </button>
+            <button id="btnCancelar"
+                    class="btn btn-secondary btn-sm d-none">
+              <i class="bi bi-x-circle"></i> Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-dark text-white text-center py-3 mt-auto">
+    © 2025 Gobierno de México · Portal de Reportes Ciudadanos
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="/assets/js/bootstrap.bundle.min.js"></script>
+  <!-- Lógica de edición con pre‑llenado de inputs -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const campos = ['nombre','apellido','localidad','telefono','correo'];
+      const datos = JSON.parse(localStorage.getItem('usuario') || '{}');
+
+      // Cargar datos actuales en spans e inputs
+      campos.forEach(c => {
+        const span = document.getElementById('span-'+c);
+        const input = document.getElementById('input-'+c);
+        const val = datos[c] || '';
+        span.textContent   = val || 'No disponible';
+        input.value        = val;
+      });
+
+      const btnEditar   = document.getElementById('btnEditar');
+      const btnGuardar  = document.getElementById('btnGuardar');
+      const btnCancelar = document.getElementById('btnCancelar');
+
+      function modoEdicion(on) {
+        campos.forEach(c => {
+          document.getElementById('span-'+c).classList.toggle('d-none', on);
+          document.getElementById('input-'+c).classList.toggle('d-none', !on);
+        });
+        btnEditar.classList.toggle('d-none', on);
+        btnGuardar.classList.toggle('d-none', !on);
+        btnCancelar.classList.toggle('d-none', !on);
+      }
+
+      btnEditar.addEventListener('click', () => modoEdicion(true));
+      btnCancelar.addEventListener('click', () => {
+        // revertir valores
+        campos.forEach(c => {
+          document.getElementById('input-'+c).value = datos[c] || '';
+        });
+        modoEdicion(false);
+      });
+
+    btnGuardar.addEventListener('click', () => {
+  Swal.fire({
+    title: 'Confirmar cambios',
+    text:  '¿Deseas guardar los cambios en tu perfil?',
+    icon:  'question',
+    showCancelButton: true,
+    confirmButtonText: 'Sí, guardar',
+    cancelButtonText: 'Cancelar'
+  }).then(async res => {
+    if (!res.isConfirmed) return;
+
+    const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+    const userId  = usuario.id;
+    const payload = {};
+    campos.forEach(c => {
+      payload[c] = document.getElementById('input-'+c).value.trim();
+    });
+
+    try {
+      const resp = await fetch(`${API_BASE_URL}/usuarios/${userId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!resp.ok) throw await resp.json();
+
+      const updated = await resp.json();
+      // Actualizo sólo el DOM
+      campos.forEach(c => {
+        document.getElementById('span-'+c).textContent = updated[c] || 'No disponible';
+      });
+
+      modoEdicion(false);
+
+      // Muestro alerta y, al cerrarla, limpio localStorage para que sólo quede id y nombre
+      Swal.fire('Guardado', 'Tu información ha sido actualizada.', 'success')
+           .then(() => {
+             // Reescribo localStorage con sólo id y nombre
+             const minimal = { id: updated.id, nombre: updated.nombre };
+             localStorage.setItem('usuario', JSON.stringify(minimal));
+           });
+
+    } catch (err) {
+      console.error(err);
+      Swal.fire('Error', err.error || err.message || 'No se pudo actualizar', 'error');
+    }
+  });
+});
+
+
+    });
+  </script>
+  <script src="/assets/js/config.js"></script>
+ <!-- Bootstrap JS Bundle -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<!-- micuenta.js -->
+<script src="/assets/js/micuenta.js"></script>
+
+</body>
+</html>

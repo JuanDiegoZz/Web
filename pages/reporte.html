@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistema de Reportes Ciudadanos</title>
+  
+  <!-- Estilos locales -->
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/icons/bootstrap-icons-1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/assets/css/reporte.css" />
+</head>
+<body>
+<!-- Encabezado -->
+<header class="d-flex align-items-center encabezado px-3 py-2">
+  <a href="/">
+    <img src="/assets/img/Escudo.webp" alt="Escudo" class="logo me-3" width="50">
+  </a>
+  <h2 class="titulo-encabezado m-0">Sistema de Reportes Ciudadanos</h2>
+</header>
+
+
+  <main class="contenedor d-flex justify-content-center align-items-center">
+    <div class="card-principal d-flex flex-column-reverse flex-lg-row shadow">
+      
+      <!-- Sección izquierda informativa -->
+      <div class="seccion-izquierda p-4 text-white">
+        <img src="/assets/img/logo_blanco.svg" alt="Gobierno de México" class="mb-3" width="150">
+        <h3 class="fw-bold">Gobierno de México</h3>
+        <p>Ingresa para gestionar reportes ciudadanos y contribuir al mejoramiento de tu comunidad.</p>
+        <p class="fw-bold">¿POR QUÉ REGISTRARSE?</p>
+        <ul class="lista-iconos ps-0">
+          <li><i class="bi bi-shield-fill-check icono"></i> Acceso seguro</li>
+          <li><i class="bi bi-graph-up-arrow icono"></i> Seguimiento en tiempo real</li>
+          <li><i class="bi bi-bank icono"></i> Conexión directa</li>
+        </ul>
+      </div>
+
+      <!-- Sección derecha: Formulario -->
+      <div class="seccion-derecha p-4 bg-white rounded-end">
+        <h4 class="text-center mb-4 titulo-formulario" id="categoria">Generar Reporte</h4>
+
+        <form id="form-reporte" enctype="multipart/form-data" method="POST">
+          <div class="mb-3">
+            <label class="form-label" for="titulo">Título del Reporte</label>
+            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Ej. Fuga de agua en calle Hidalgo" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="descripcion">Descripción</label>
+            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Explica el problema con detalles..." required></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="direccion">Ubicación detectada</label>
+            <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección detectada por el mapa" readonly required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="imagen">Evidencia (imagen)</label>
+            <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*" />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Mapa de ubicación</label>
+            <div id="map" class="text-center text-muted border rounded p-3" style="height: 210px;">
+              Cargando mapa...
+            </div>
+          </div>
+
+          <!-- Coordenadas ocultas: ahora name coincide con controller -->
+          <input type="hidden" id="lat" name="latitud">
+          <input type="hidden" id="lng" name="longitud">
+
+          <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-primary boton-enviar">
+              <i class="bi bi-send-fill me-2"></i>Enviar Reporte
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center py-3 pie-pagina">
+    © 2025 Gobierno de México. Todos los derechos reservados.
+  </footer>
+
+  <!-- Script para mostrar la categoría en el título -->
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const categoria = params.get("categoria") || "Generar Reporte";
+    document.getElementById("categoria").textContent = categoria;
+  </script>
+
+  <!-- Librerías y tu JS -->
+   <script src="/assets/js/config.js"></script>
+  <script src="/assets/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/assets/js/reporte.js"></script>
+
+  <!-- Google Maps API desde endpoint seguro -->
+  <script>
+    fetch('/config.json')
+      .then(response => response.json())
+      .then(data => {
+        const googleMapsApiKey = data.googleMapsApiKey;
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}&callback=initMap`;
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+      })
+      .catch(error => {
+        console.error('Error al cargar la clave API de Google Maps:', error);
+      });
+  </script>
+  
+</body>
+</html>

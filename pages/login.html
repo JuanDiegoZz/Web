@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Sistema de Reportes Ciudadanos</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/login.css">
+    <link rel="stylesheet" href="/assets/icons/bootstrap-icons-1.11.3/font/bootstrap-icons.css">
+    <!-- Fuente Montserrat para mejor legibilidad -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="login-body">
+    <div class="login-wrapper">
+        <!-- Header -->
+        <header class="login-header">
+            <div class="container">
+                <div class="header-content">
+            <a href="/">
+                <img src="/assets/img/logo_blanco.svg" alt="Gobierno de México" class="login-logo">
+            </a>
+        <h1 class="system-title">Sistema de Reportes Ciudadanos</h1>
+    </div>
+            </div>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="login-main">
+            <div class="container">
+                <div class="login-card-container">
+                    <div class="login-card">
+                        <!-- Sección informativa -->
+                        <div class="login-info">
+                            <div class="info-content">
+                                <h2 class="government-title">Gobierno de México</h2>
+                                <p class="info-description">Ingresa para gestionar reportes ciudadanos y contribuir al mejoramiento de tu comunidad.</p>
+
+                                <div class="benefits-section">
+                                    <h3 class="benefits-title">¿POR QUÉ REGISTRARSE?</h3>
+                                    <ul class="benefits-list">
+                                        <li>
+                                            <i class="bi bi-shield-check benefit-icon"></i>
+                                            <div>
+                                                <h4 class="benefit-item-title">Acceso seguro</h4>
+                                                <p class="benefit-item-desc">Protegemos tus datos con cifrado avanzado.</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <i class="bi bi-graph-up benefit-icon"></i>
+                                            <div>
+                                                <h4 class="benefit-item-title">Seguimiento en tiempo real</h4>
+                                                <p class="benefit-item-desc">Monitorea el progreso de tus reportes.</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <i class="bi bi-building benefit-icon"></i>
+                                            <div>
+                                                <h4 class="benefit-item-title">Conexión directa</h4>
+                                                <p class="benefit-item-desc">Comunicate con autoridades locales.</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Formulario de login -->
+                        <div class="login-form">
+                            <div class="form-container">
+                                <h2 class="form-title">Iniciar Sesión</h2>
+
+                                <!-- Botones circulares con sombra y hover suave -->
+                                <div class="social-login mb-4 text-center">
+                                    <p class="text-secondary mb-3">Inicia sesión con:</p>
+                                    <div class="d-flex justify-content-center gap-3">
+                                        <!-- Google -->
+                                        <a href="http://localhost:3000/auth/google" class="btn btn-light border rounded-circle d-flex align-items-center justify-content-center shadow-sm social-btn" style="width: 50px; height: 50px;">
+                                            <i class="bi bi-google text-danger fs-5"></i>
+                                        </a>
+
+                                        
+                                    </div>
+                                    <div class="text-muted small mt-3">— o usa tu correo electrónico —</div>
+                                </div>
+
+                                <!-- Login -->
+                                <form class="login-form-content" id="loginForm">
+                                    <!-- Campo Email -->
+                                    <div class="form-group">
+                                        <label for="email" class="input-label">Correo Electrónico</label>
+                                        <div class="input-group">
+                                            <span class="input-icon"><i class="bi bi-envelope"></i></span>
+                                            <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+                                        </div>
+                                        <div class="invalid-feedback" id="emailError"></div>
+                                    </div>
+
+                                    <!-- Campo Contraseña -->
+                                    <div class="form-group">
+                                        <label for="password" class="input-label">Contraseña</label>
+                                        <div class="input-group">
+                                            <span class="input-icon"><i class="bi bi-lock"></i></span>
+                                            <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required autocomplete="current-password">
+                                            <button type="button" class="password-toggle" id="togglePassword">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                        </div>
+                                        <div class="invalid-feedback" id="passwordError"></div>
+                                    </div>
+
+                                    <!-- Botón de login dentro del formulario -->
+                                    <button type="submit" class="login-btn">
+                                        <i class="bi bi-box-arrow-in-right"></i>
+                                        <span>Iniciar Sesión</span>
+                                    </button>
+                                </form>
+
+                                <!-- Opciones adicionales -->
+                                <div class="form-options">
+                                    <div class="remember-me">
+                                        <input type="checkbox" id="remember">
+                                        <label for="remember" class="remember-label">Recordar mi sesión</label>
+                                    </div>
+                                    <a href="/pages/recuperar.html" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                                </div>
+
+                                <!-- Enlace de crear cuenta -->
+                                <div class="create-account">
+                                    <p class="account-text">¿No tienes cuenta? <a href="../pages/registro.html" class="account-link">Crear cuenta</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="login-footer">
+        <div class="container">
+            <p class="footer-text">© 2023 Gobierno de México. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+<script src="/assets/js/config.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../assets/js/login.js"></script>
+</body>
+
+</html>
