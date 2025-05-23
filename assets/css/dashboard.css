@@ -1,0 +1,210 @@
+/* Fuentes modernas y profesionales */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap');
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background-color: #f9fafb;
+  margin: 0;
+  padding: 30px 20px;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Título principal */
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 2.8rem;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 1.2px;
+  user-select: none;
+}
+
+/* Contenedor filtro fechas */
+.filtro-fechas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Labels para fechas */
+.filtro-fechas label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #555;
+  user-select: none;
+}
+
+/* Inputs de fechas */
+.filtro-fechas input[type="date"] {
+  padding: 10px 14px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1.8px solid #d1d5db; /* gris claro */
+  transition: border-color 0.3s ease;
+  width: 150px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.filtro-fechas input[type="date"]:focus {
+  outline: none;
+  border-color: #3b82f6; /* azul intenso */
+  box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+}
+
+/* Botón actualizar */
+.filtro-fechas button {
+  background-color: #3b82f6; /* azul vibrante */
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+  box-shadow: 0 4px 6px rgba(59,130,246,0.3);
+}
+
+.filtro-fechas button:hover {
+  background-color: #2563eb; /* azul más oscuro */
+}
+
+/* Contenedor para la gráfica y botones */
+.d-flex {
+  display: flex !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.justify-content-center {
+  justify-content: center !important;
+}
+
+/* Espacio y estilo para contenedor principal de gráficas */
+.chart-container {
+  background: white;
+  padding: 30px 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+  max-width: 850px;
+  margin: 0 auto;
+  min-height: 480px; /* Más alto para mejor espacio */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Títulos de cada gráfica */
+.chart-container h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #1e293b;
+  user-select: none;
+}
+
+/* Ajuste responsive canvas para que ocupe todo el ancho */
+canvas {
+  width: 100% !important;
+  height: 420px !important; /* Más alto que antes para mejor claridad */
+  object-fit: contain; /* evitar distorsión */
+}
+
+/* Botones de navegación (prev y next) */
+.btn-outline-primary {
+  border: 2px solid #3b82f6;
+  color: #3b82f6;
+  background-color: transparent;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 3px 6px rgba(59,130,246,0.3);
+}
+
+.btn-outline-primary:hover {
+  background-color: #3b82f6;
+  color: white;
+  box-shadow: 0 6px 15px rgba(59,130,246,0.6);
+}
+
+/* Iconos dentro de botones */
+.btn-outline-primary i {
+  font-size: 1.8rem;
+  pointer-events: none;
+}
+
+/* Contenedor botón descargar */
+.descargar-container {
+  text-align: center;
+  margin-top: 45px;
+}
+
+/* Botón descargar informe */
+.descargar-container button {
+  background-color: #10b981; /* verde esmeralda */
+  color: white;
+  border: none;
+  padding: 14px 36px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 5px 12px rgba(16,185,129,0.4);
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.descargar-container button:hover {
+  background-color: #059669; /* verde oscuro */
+}
+
+/* Responsive tweaks para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .chart-container {
+    min-height: 420px;
+    padding: 25px 20px;
+  }
+  .filtro-fechas input[type="date"] {
+    width: 130px;
+  }
+
+  .chart-container {
+    min-height: 360px;
+    padding: 20px 15px;
+  }
+
+  canvas {
+    height: 360px !important;
+  }
+
+  .btn-outline-primary {
+    width: 42px;
+    height: 42px;
+  }
+
+  .btn-outline-primary i {
+    font-size: 1.4rem;
+  }
+}
+

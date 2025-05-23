@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard de Reportes</title>
+  
+  <!-- Bootstrap CSS e íconos -->
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/icons/bootstrap-icons-1.11.3/font/bootstrap-icons.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="../assets/css/dashboard.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+  <h1 class="text-center my-4">Panel de Estadísticas</h1>
+
+  <!-- Filtro por fechas -->
+  <div class="filtro-fechas d-flex justify-content-center gap-3 flex-wrap mb-4">
+    <label for="fechaInicio" class="align-self-center mb-0">Desde:</label>
+    <input type="date" id="fechaInicio" class="form-control" />
+    <label for="fechaFin" class="align-self-center mb-0">Hasta:</label>
+    <input type="date" id="fechaFin" class="form-control" />
+    <button id="btnActualizar" class="btn btn-success">Actualizar</button>
+  </div>
+
+  <!-- Contenedor de las gráficas con botones de navegación -->
+  <div class="d-flex align-items-center justify-content-center gap-3" style="max-width: 800px; margin: 0 auto;">
+
+    <button id="prevBtn" class="btn btn-outline-primary">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+
+    <div style="flex: 1; min-width: 0;">
+      <div class="chart-container" style="display: none;" id="chartEstado">
+        <h3 class="text-center">Distribución de reportes por estado</h3>
+        <canvas id="pieChart"></canvas>
+      </div>
+
+      <div class="chart-container" style="display: none;" id="chartFecha">
+        <h3 class="text-center">Cantidad de reportes por día</h3>
+        <canvas id="lineChart"></canvas>
+      </div>
+
+      <div class="chart-container" style="display: none;" id="chartTipo">
+        <h3 class="text-center">Reportes por tipo</h3>
+        <canvas id="barChart"></canvas>
+      </div>
+    </div>
+
+    <button id="nextBtn" class="btn btn-outline-primary">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+
+  <!-- Botón para descargar informe -->
+  <div class="descargar-container text-center my-4">
+    <button id="btnDescargarPDF"  type="button" class="btn btn-primary">Descargar Informe PDF</button>
+  </div>
+
+  <!-- Config global -->
+  <script src="../assets/js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+  <!-- Código JS -->
+  <script src="../assets/js/admin_dashboard.js"></script>
+</body>
+</html>
