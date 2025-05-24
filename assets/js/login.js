@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.getElementById('loginForm');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
-    const loginBtn = document.querySelector('.login-btn');
 
     if (togglePassword && passwordField) {
         togglePassword.addEventListener("click", function () {
@@ -43,7 +42,9 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
+                // Guardar usuario y token en localStorage
                 localStorage.setItem('usuario', JSON.stringify(data.usuario));
+                localStorage.setItem('token', data.token);  // <-- Aquí guardas el token JWT
                 window.location.href = '../index.html';
             } else {
                 Swal.fire({

@@ -2,6 +2,15 @@ let pieChart = null;
 let lineChart = null;
 let barChart = null;
 
+const token = localStorage.getItem('token');
+if (!token) {
+  alert('No estás autenticado. Por favor inicia sesión.');
+  window.location.href = '/'; // Ajusta según tu ruta
+  throw new Error('No token found');
+}
+
+const headers = { 'Authorization': `Bearer ${token}` };
+
 // Función para asignar color por estado
 const getColorPorEstado = (estado) => {
   switch (estado.toLowerCase()) {
@@ -24,11 +33,15 @@ async function cargarGraficas(fechaInicio = null, fechaFin = null) {
     }
 
     // === Datos por estado ===
-    const resEstados = await fetch(`${API_BASE_URL}/estadisticas/por-estado${queryParams}`);
+    const resEstados = await fetch(`${API_BASE_URL}/estadisticas/por-estado${queryParams}`, {
+      headers
+    });
     const estados = await resEstados.json();
 
     // === Datos por fecha ===
-    const resFechas = await fetch(`${API_BASE_URL}/estadisticas/por-fecha${queryParams}`);
+    const resFechas = await fetch(`${API_BASE_URL}/estadisticas/por-fecha${queryParams}`, {
+      headers
+    });
     const fechas = await resFechas.json();
 
     // === Destruir charts anteriores ===
@@ -95,7 +108,6 @@ async function cargarGraficas(fechaInicio = null, fechaFin = null) {
   }
 }
 
-// === Gráfica de barras por tipo ===
 async function cargarBarChart(fechaInicio = null, fechaFin = null) {
   try {
     let queryParams = '';
@@ -103,7 +115,15 @@ async function cargarBarChart(fechaInicio = null, fechaFin = null) {
       queryParams = `?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`;
     }
 
-    const res = await fetch(`${API_BASE_URL}/estadisticas/por-tipo${queryParams}`);
+    if (!token) {
+      alert('No estás autenticado. Por favor inicia sesión.');
+      window.location.href = '/pages/login.html'; // Ajusta según tu ruta de login
+      return;
+    }
+
+    const res = await fetch(`${API_BASE_URL}/estadisticas/por-tipo${queryParams}`, {
+      headers
+    });
     const data = await res.json();
 
     if (barChart) barChart.destroy();
@@ -123,7 +143,7 @@ async function cargarBarChart(fechaInicio = null, fechaFin = null) {
       },
       options: {
         responsive: true,
-        indexAxis: 'y', // Cambia a 'x' si prefieres vertical
+        indexAxis: 'y',
         plugins: {
           legend: {
             display: false
@@ -183,6 +203,7 @@ document.getElementById('nextBtn').addEventListener('click', () => {
 
 // === Carga inicial ===
 cargarGraficas();
+
 document.getElementById('btnDescargarPDF').addEventListener('click', async () => {
   const fechaInicio = document.getElementById('fechaInicio').value;
   const fechaFin = document.getElementById('fechaFin').value;
@@ -204,7 +225,7 @@ document.getElementById('btnDescargarPDF').addEventListener('click', async () =>
   let queryParams = `?fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`;
 
   // === Por Estado ===
-  const resEstado = await fetch(`${API_BASE_URL}/estadisticas/por-estado${queryParams}`);
+  const resEstado = await fetch(`${API_BASE_URL}/estadisticas/por-estado${queryParams}`, { headers });
   const datosEstado = await resEstado.json();
 
   doc.setFontSize(14);
@@ -218,7 +239,7 @@ document.getElementById('btnDescargarPDF').addEventListener('click', async () =>
   doc.addPage();
 
   // === Por Fecha ===
-  const resFecha = await fetch(`${API_BASE_URL}/estadisticas/por-fecha${queryParams}`);
+  const resFecha = await fetch(`${API_BASE_URL}/estadisticas/por-fecha${queryParams}`, { headers });
   const datosFecha = await resFecha.json();
 
   const fechasUnicas = [...new Set(datosFecha.map(f => f.fecha))];
@@ -243,7 +264,7 @@ document.getElementById('btnDescargarPDF').addEventListener('click', async () =>
   doc.addPage();
 
   // === Por Tipo ===
-  const resTipo = await fetch(`${API_BASE_URL}/estadisticas/por-tipo${queryParams}`);
+  const resTipo = await fetch(`${API_BASE_URL}/estadisticas/por-tipo${queryParams}`, { headers });
   const datosTipo = await resTipo.json();
 
   doc.text('Cantidad de reportes por tipo', 14, 20);

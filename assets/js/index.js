@@ -30,6 +30,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (usuarioGuardado) {
         try {
             const usuario = JSON.parse(usuarioGuardado);
+            const token = localStorage.getItem("token");
+            const menuReporteSemanal = document.getElementById("menuReporteSemanal");
+
+            // Boton Admin
+            if (token && menuReporteSemanal) {
+            try {
+             // Decodificar el token (solo el payload, que está en base64)
+            const payloadBase64 = token.split('.')[1];
+            const payload = JSON.parse(atob(payloadBase64));
+
+            if (payload.rol === "admin") {
+            menuReporteSemanal.classList.remove("d-none");}
+            } catch (error) {
+            console.error("No se pudo decodificar el token:", error);}}
+    
+
 
             // Ocultar el botón de Hero (si existe)
             if (btnHero) {
@@ -68,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             fetch(`${API_BASE_URL}/auth/logout`, { method: 'GET', credentials: 'include' })
                                 .finally(() => {
                                     localStorage.removeItem("usuario");
+                                    localStorage.removeItem("token"); 
                                     location.reload();
                                 });
                         }
